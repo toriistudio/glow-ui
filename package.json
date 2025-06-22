@@ -1,6 +1,6 @@
 {
   "name": "@toriistudio/glow-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Glowing UI components for React",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -31,8 +31,6 @@
     "build": "tsup",
     "dev:push": "yarn build && yalc push",
     "prepublishOnly": "npm run build",
-    "release:patch": "npm version patch && git push --follow-tags && npm publish --access public",
-    "release:minor": "npm version minor && git push --follow-tags && npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
