@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@toriistudio/glow-ui": {
+      "signature": "5fe7f80ab7b36943e3435c61aec21c73",
+      "file": true,
+      "replaced": "file:../../dist"
+    }
+  }
+}
