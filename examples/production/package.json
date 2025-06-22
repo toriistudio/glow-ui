@@ -1,14 +1,14 @@
 {
-  "name": "glow-ui-example-basic",
+  "name": "glow-ui-example-production",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "yalc add @toriistudio/glow-ui && yarn && vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@toriistudio/glow-ui": "file:.yalc/@toriistudio/glow-ui",
+    "@toriistudio/glow-ui": "latest",
     "clsx": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

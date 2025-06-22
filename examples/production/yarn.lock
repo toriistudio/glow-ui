@@ -458,8 +458,10 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.44.0.tgz#a36e79b6ccece1533f777a1bca1f89c13f0c5f62"
   integrity sha512-Q2Mgwt+D8hd5FIPUuPDsvPR7Bguza6yTkJxspDGkZj7tBRn2y4KSWYuIXpftFSjBra76TbKerCV7rgFPQrn+wQ==
 
-"@toriistudio/glow-ui@file:.yalc/@toriistudio/glow-ui":
+"@toriistudio/glow-ui@latest":
   version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@toriistudio/glow-ui/-/glow-ui-0.1.1.tgz#ec92532221a84d20f5fb15c00b277b6da2d6bb61"
+  integrity sha512-O2eYU6BUhRcrYQi4pCCYQYX3KphHAHUcpi70v0B+dIi4s76piCmzmnIayHjAehW/KoE+LUtbC34CJbIYxK1jeQ==
 
 "@types/babel__core@^7.20.5":
   version "7.20.5"
