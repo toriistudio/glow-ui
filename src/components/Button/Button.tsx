@@ -3,17 +3,19 @@ import {
   Button as UIButton,
   ButtonProps as UIButtonProps,
 } from "@/components/ui/button";
-import GlowingBorder from "@/components/GlowingBorder";
+import Wrapper from "@/components/Wrapper";
 
 type ButtonProps = {
   isGlowing?: boolean;
   glowColor?: string;
+  glowSize?: number | string;
 } & UIButtonProps;
 
 const Button: React.FC<ButtonProps> = ({
   isGlowing = true,
   glowColor = "red",
   disabled = false,
+  glowSize = 1,
   children,
   ...props
 }) => {
@@ -24,9 +26,9 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return isGlowing ? (
-    <GlowingBorder color={glowColor} disabled={disabled}>
+    <Wrapper glowColor={glowColor} glowSize={glowSize} glow={!disabled}>
       {button}
-    </GlowingBorder>
+    </Wrapper>
   ) : (
     button
   );

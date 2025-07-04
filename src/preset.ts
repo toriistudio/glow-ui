@@ -68,6 +68,8 @@ const preset: Partial<Config> = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "glow-spin": "spin-glow var(--glowing-border-speed) linear infinite",
+        "rotation-z": "rotation-z 5s linear infinite",
+        "floating-y": "floating-y 2.6s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -89,6 +91,14 @@ const preset: Partial<Config> = {
         "spin-glow": {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
+        },
+        "rotation-z": {
+          "0%": { transform: "rotateZ(0deg)" },
+          "100%": { transform: "rotateZ(360deg)" },
+        },
+        "floating-y": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(10px)" },
         },
       },
     },
