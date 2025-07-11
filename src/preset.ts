@@ -70,6 +70,7 @@ const preset: Partial<Config> = {
         "glow-spin": "spin-glow var(--glowing-border-speed) linear infinite",
         "rotation-z": "rotation-z 5s linear infinite",
         "floating-y": "floating-y 2.6s linear infinite",
+        "spin-slow": "spin 4s linear infinite",
       },
       keyframes: {
         "accordion-down": {

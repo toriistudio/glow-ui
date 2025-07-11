@@ -6,7 +6,11 @@ type WrapperProps = {
   glow?: boolean;
   glowSize?: number | string;
   glowColor?: string;
-  glowSpeed?: string;
+  glowSpeed?: {
+    default?: string;
+    hover?: string;
+  };
+  glowBackgroundImage?: string;
 };
 
 const Wrapper: React.FC<WrapperProps> = ({
@@ -14,9 +18,15 @@ const Wrapper: React.FC<WrapperProps> = ({
   glow = true,
   glowSize = 1,
   glowColor = "#ff9966",
-  glowSpeed = "5s",
+  glowSpeed = {
+    default: "5s",
+    hover: "2.5s",
+  },
+  glowBackgroundImage,
 }) => {
+  const glowRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [childSize, setChildSize] = useState({ width: 0, height: 0 });
   const [childRadius, setChildRadius] = useState("5px");
 
@@ -41,6 +51,32 @@ const Wrapper: React.FC<WrapperProps> = ({
     return () => observer.disconnect();
   }, [children]);
 
+  const handleMouseEnter = () => {
+    if (glowRef.current) {
+      glowRef.current.style.setProperty(
+        "--glow-speed",
+        glowSpeed.hover ?? glowSpeed.default ?? "5s"
+      );
+    }
+
+    if (wrapperRef.current) {
+      wrapperRef.current.style.filter = "brightness(1.5)";
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (glowRef.current) {
+      glowRef.current.style.setProperty(
+        "--glow-speed",
+        glowSpeed.default ?? "5s"
+      );
+    }
+
+    if (wrapperRef.current) {
+      wrapperRef.current.style.filter = "brightness(1)";
+    }
+  };
+
   const diagonal = Math.sqrt(childSize.width ** 2 + childSize.height ** 2);
   const glowWidth = Math.min(childSize.width, childSize.height);
   const glowHeight = diagonal;
@@ -50,7 +86,7 @@ const Wrapper: React.FC<WrapperProps> = ({
 
   const glowStyle = {
     "--glow-color": glowColor,
-    "--glow-speed": glowSpeed,
+    "--glow-speed": glowSpeed.default,
     borderRadius: childRadius,
   } as React.CSSProperties;
 
@@ -69,7 +105,9 @@ const Wrapper: React.FC<WrapperProps> = ({
       {/* Actual wrapper */}
       {childSize.width > 0 && (
         <div
-          className="relative inline-block"
+          className="relative inline-block group"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           style={{
             width: `${Math.ceil(wrapperWidth)}px`,
             height: `${Math.ceil(wrapperHeight)}px`,
@@ -77,6 +115,7 @@ const Wrapper: React.FC<WrapperProps> = ({
         >
           {glow && (
             <div
+              ref={glowRef}
               className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
               style={glowStyle}
             >
@@ -84,18 +123,24 @@ const Wrapper: React.FC<WrapperProps> = ({
                 className={clsx(
                   "absolute",
                   "animate-[rotation-z_var(--glow-speed)_linear_infinite]",
-                  "bg-[linear-gradient(90deg,transparent,var(--glow-color),var(--glow-color),var(--glow-color),var(--glow-color),transparent)]"
+                  glowBackgroundImage
+                    ? ""
+                    : "bg-[linear-gradient(90deg,transparent,var(--glow-color),var(--glow-color),var(--glow-color),var(--glow-color),transparent)]"
                 )}
                 style={{
                   width: `${glowWidth}px`,
                   height: `${glowHeight}px`,
                   borderRadius: childRadius,
+                  backgroundImage: glowBackgroundImage,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
                 }}
               />
             </div>
           )}
 
           <div
+            ref={wrapperRef}
             className="absolute z-10"
             style={{
               left: `${resolvedGlowSize}px`,
