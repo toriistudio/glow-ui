@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import clsx from "clsx";
 import Wrapper from "@/components/Wrapper";
 
 type IconProps = {
@@ -33,7 +34,12 @@ const IconButton: React.FC<IconProps> = ({
         cursor: disabled ? "default" : "pointer",
       }}
     >
-      <div className="transition-transform duration-300 ease-out group-hover:scale-110">
+      <div
+        className={clsx(
+          "transition-transform duration-300 ease-out",
+          !disabled && "group-hover:scale-110"
+        )}
+      >
         {children}
       </div>
     </div>

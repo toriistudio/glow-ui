@@ -791,7 +791,7 @@
   integrity sha512-3+QZROYfJ25PDcxFF66UEk8jGWigHJeecZILvkPkyQN7oc5BvFo4YEXFkOs154j3FTMp9mn9Ky8RCOwastduEA==
 
 "@toriistudio/glow-ui@file:.yalc/@toriistudio/glow-ui":
-  version "1.0.0"
+  version "1.1.0"
 
 "@toriistudio/v0-playground@latest":
   version "0.3.1"
