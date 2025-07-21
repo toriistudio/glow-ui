@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@toriistudio/glow-ui": {
-      "signature": "f75e290b23bce7b19998f9f1bffc03e0",
+      "signature": "7003fdcfb348b0522dede74adae33b33",
       "file": true,
       "replaced": "latest"
     }
